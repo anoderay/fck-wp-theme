@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Eyebrow",
+	"slug": "eyebrow",
+	"blockTypes": [ "core/paragraph" ],
+	"styles": {
+		"color": {
+			"text": "var:preset|color|accent-1"
+		},
+		"typography": {
+			"fontSize": "var:preset|font-size|small",
+			"letterSpacing": "0.08em"
+		}
+	}
+}
