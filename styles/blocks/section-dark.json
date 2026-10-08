@@ -3,7 +3,9 @@
 	"version": 3,
 	"title": "Dunkler Abschnitt",
 	"slug": "section-dark",
-	"blockTypes": [ "core/group" ],
+	"blockTypes": [
+		"core/group"
+	],
 	"styles": {
 		"color": {
 			"background": "var:preset|color|contrast",
@@ -11,8 +13,8 @@
 		},
 		"spacing": {
 			"padding": {
-				"top": "var:preset|spacing|80",
-				"bottom": "var:preset|spacing|80"
+				"top": "var:preset|spacing|70",
+				"bottom": "var:preset|spacing|70"
 			}
 		}
 	}

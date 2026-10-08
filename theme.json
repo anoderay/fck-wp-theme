@@ -6,60 +6,222 @@
 			"palette": [
 				{
 					"slug": "base",
-					"name": "Hintergrund",
+					"name": "Weiß",
 					"color": "#FFFFFF"
 				},
 				{
 					"slug": "contrast",
-					"name": "Dunkel",
-					"color": "#14161A"
+					"name": "Dunkel (Abschnitte, Text)",
+					"color": "#101119"
 				},
 				{
 					"slug": "accent-1",
-					"name": "Akzent (Orange) – PLATZHALTER",
-					"color": "#F26B1D"
+					"name": "Primär (Navy)",
+					"color": "#2F4075"
 				},
 				{
 					"slug": "accent-2",
-					"name": "Akzent dunkel – PLATZHALTER",
-					"color": "#C9540F"
+					"name": "Primär hell",
+					"color": "#4D69B8"
 				},
 				{
 					"slug": "accent-3",
-					"name": "Akzent hell – PLATZHALTER",
-					"color": "#FFE7D6"
+					"name": "Lavendel (helle Fläche)",
+					"color": "#F7F6FB"
 				},
 				{
 					"slug": "accent-4",
-					"name": "Grau dunkel",
-					"color": "#4A4F57"
+					"name": "Grau (Fließtext hell)",
+					"color": "#6B7080"
 				},
 				{
 					"slug": "accent-5",
-					"name": "Grau hell",
-					"color": "#F3F4F6"
+					"name": "Karte dunkel",
+					"color": "#191C21"
 				},
 				{
 					"slug": "accent-6",
-					"name": "Linie",
-					"color": "#D9DCE1"
+					"name": "Grau hell (Text auf dunkel, Linien)",
+					"color": "#C9CCD8"
+				},
+				{
+					"slug": "ink",
+					"name": "Hero-Schwarz",
+					"color": "#070A13"
 				}
 			]
 		},
 		"layout": {
 			"contentSize": "720px",
 			"wideSize": "1200px"
+		},
+		"spacing": {
+			"spacingSizes": [
+				{
+					"slug": "20",
+					"name": "20",
+					"size": "0.5rem"
+				},
+				{
+					"slug": "30",
+					"name": "30",
+					"size": "0.75rem"
+				},
+				{
+					"slug": "40",
+					"name": "40",
+					"size": "1rem"
+				},
+				{
+					"slug": "50",
+					"name": "50",
+					"size": "1.5rem"
+				},
+				{
+					"slug": "60",
+					"name": "60",
+					"size": "2rem"
+				},
+				{
+					"slug": "70",
+					"name": "70",
+					"size": "2.75rem"
+				},
+				{
+					"slug": "80",
+					"name": "80",
+					"size": "3.5rem"
+				}
+			]
+		},
+		"typography": {
+			"fluid": false,
+			"fontSizes": [
+				{
+					"slug": "x-small",
+					"name": "x-small",
+					"size": "0.8125rem"
+				},
+				{
+					"slug": "small",
+					"name": "small",
+					"size": "0.875rem"
+				},
+				{
+					"slug": "medium",
+					"name": "medium",
+					"size": "1rem"
+				},
+				{
+					"slug": "large",
+					"name": "large",
+					"size": "1.125rem"
+				},
+				{
+					"slug": "x-large",
+					"name": "x-large",
+					"size": "clamp(1.25rem, 1.6vw, 1.5rem)"
+				},
+				{
+					"slug": "xx-large",
+					"name": "xx-large",
+					"size": "clamp(2.25rem, 4vw, 3.5rem)"
+				}
+			],
+			"fontFamilies": [
+				{
+					"slug": "inter",
+					"name": "Inter",
+					"fontFamily": "Inter, system-ui, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Inter",
+							"fontWeight": "100 900",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/inter-latin-wght.woff2"
+							]
+						}
+					]
+				},
+				{
+					"slug": "archivo",
+					"name": "Archivo (Überschriften)",
+					"fontFamily": "Archivo, Inter, system-ui, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Archivo",
+							"fontWeight": "100 900",
+							"fontStretch": "62% 125%",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/archivo-latin-wdth.woff2"
+							]
+						}
+					]
+				}
+			]
 		}
 	},
 	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|contrast"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|inter",
+			"fontSize": "var:preset|font-size|medium",
+			"lineHeight": "1.6"
+		},
+		"spacing": {
+			"blockGap": "1rem"
+		},
 		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|archivo",
+					"fontWeight": "800",
+					"lineHeight": "1.1",
+					"letterSpacing": "-0.01em"
+				},
+				"css": "font-stretch:112%;"
+			},
+			"h1": {
+				"typography": {
+					"fontSize": "var:preset|font-size|xx-large"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "clamp(1.625rem, 2.6vw, 2.25rem)"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "var:preset|font-size|x-large"
+				}
+			},
 			"button": {
 				"color": {
 					"background": "var:preset|color|accent-1",
-					"text": "var:preset|color|contrast"
+					"text": "var:preset|color|base"
 				},
 				"border": {
-					"radius": "999px"
+					"radius": "4px"
+				},
+				"spacing": {
+					"padding": {
+						"top": "0.7rem",
+						"bottom": "0.7rem",
+						"left": "1.25rem",
+						"right": "1.25rem"
+					}
+				},
+				"typography": {
+					"fontSize": "var:preset|font-size|small",
+					"fontWeight": "500"
 				},
 				":hover": {
 					"color": {
@@ -70,16 +232,65 @@
 			},
 			"link": {
 				"color": {
-					"text": "var:preset|color|accent-2"
-				}
-			},
-			"h1": {
-				"typography": {
-					"fontSize": "var:preset|font-size|xx-large"
+					"text": "var:preset|color|accent-1"
 				}
 			}
 		},
 		"blocks": {
+			"core/post-title": {
+				"typography": {
+					"fontSize": "var:preset|font-size|large"
+				},
+				"elements": {
+					"link": {
+						"typography": {
+							"textDecoration": "none"
+						},
+						"color": {
+							"text": "var:preset|color|contrast"
+						}
+					}
+				}
+			},
+			"core/post-excerpt": {
+				"typography": {
+					"fontSize": "var:preset|font-size|small"
+				},
+				"color": {
+					"text": "var:preset|color|accent-4"
+				}
+			},
+			"core/post-featured-image": {
+				"border": {
+					"radius": "4px"
+				}
+			},
+			"core/read-more": {
+				"typography": {
+					"fontSize": "var:preset|font-size|small",
+					"fontWeight": "500"
+				}
+			},
+			"core/navigation": {
+				"typography": {
+					"fontSize": "var:preset|font-size|small"
+				},
+				"elements": {
+					"link": {
+						"typography": {
+							"textDecoration": "none"
+						},
+						"color": {
+							"text": "var:preset|color|contrast"
+						}
+					}
+				}
+			},
+			"core/table": {
+				"typography": {
+					"fontSize": "var:preset|font-size|small"
+				}
+			},
 			"core/details": {
 				"border": {
 					"bottom": {
@@ -90,8 +301,8 @@
 				},
 				"spacing": {
 					"padding": {
-						"top": "var:preset|spacing|20",
-						"bottom": "var:preset|spacing|20"
+						"top": "var:preset|spacing|30",
+						"bottom": "var:preset|spacing|30"
 					}
 				},
 				"css": "& summary{cursor:pointer;font-weight:600;}"

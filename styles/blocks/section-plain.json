@@ -3,7 +3,9 @@
 	"version": 3,
 	"title": "Normaler Abschnitt",
 	"slug": "section-plain",
-	"blockTypes": [ "core/group" ],
+	"blockTypes": [
+		"core/group"
+	],
 	"styles": {
 		"spacing": {
 			"padding": {

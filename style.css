@@ -3,39 +3,13 @@ Theme Name: Fechtclub Kassel
 Theme URI: https://www.fechtclub-kassel.de/
 Description: Child-Theme von Twenty Twenty-Five für den Fechtclub Kassel e.V.
 Template: twentytwentyfive
-Version: 0.2.0
+Version: 0.3.0
 Requires at least: 6.7
 Requires PHP: 7.4
 Text Domain: fechtclub
 */
 
 /*
- * Nur CSS, das sich nicht über theme.json / Stilvarianten abbilden lässt.
- * Aussehen von Blöcken gehört nach theme.json und styles/blocks/*.json.
+ * Bewusst (fast) leer: Das Aussehen steckt in theme.json und
+ * styles/blocks/*.json. Hier nur, was sich dort nicht ausdrücken lässt.
  */
-
-/* Laufband (Variante "Laufband", styles/blocks/ticker.json) */
-.is-style-ticker {
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.is-style-ticker > p {
-	display: inline-block;
-	margin: 0;
-	padding-inline-start: 100%;
-	animation: fck-ticker 30s linear infinite;
-}
-
-@keyframes fck-ticker {
-	to {
-		transform: translateX(-100%);
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.is-style-ticker > p {
-		animation: none;
-		padding-inline-start: 0;
-	}
-}

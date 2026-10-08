@@ -9,13 +9,15 @@
 ?>
 <!-- wp:pattern {"slug":"fechtclub/hero"} /-->
 
-<!-- wp:pattern {"slug":"fechtclub/ticker"} /-->
+<!-- wp:pattern {"slug":"fechtclub/duellieren"} /-->
 
 <!-- wp:pattern {"slug":"fechtclub/latest-posts"} /-->
 
 <!-- wp:pattern {"slug":"fechtclub/features"} /-->
 
 <!-- wp:pattern {"slug":"fechtclub/testimonials"} /-->
+
+<!-- wp:pattern {"slug":"fechtclub/cta"} /-->
 
 <!-- wp:pattern {"slug":"fechtclub/training-times"} /-->
 

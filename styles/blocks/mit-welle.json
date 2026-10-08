@@ -1,0 +1,12 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Titel mit Wellenlinien",
+	"slug": "mit-welle",
+	"blockTypes": [
+		"core/heading"
+	],
+	"styles": {
+		"css": "&{position:relative;} &::before{content:'';position:absolute;left:-1.75rem;top:-1.25rem;width:4.5rem;height:4.5rem;background:var(--fck-waves) no-repeat;background-size:contain;z-index:-1;}"
+	}
+}

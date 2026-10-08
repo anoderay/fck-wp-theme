@@ -3,10 +3,12 @@
 	"version": 3,
 	"title": "Eyebrow",
 	"slug": "eyebrow",
-	"blockTypes": [ "core/paragraph" ],
+	"blockTypes": [
+		"core/paragraph"
+	],
 	"styles": {
 		"color": {
-			"text": "var:preset|color|accent-1"
+			"text": "var:preset|color|accent-6"
 		},
 		"typography": {
 			"fontSize": "var:preset|font-size|small",

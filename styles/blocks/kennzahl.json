@@ -3,10 +3,12 @@
 	"version": 3,
 	"title": "Kennzahl",
 	"slug": "kennzahl",
-	"blockTypes": [ "core/heading" ],
+	"blockTypes": [
+		"core/heading"
+	],
 	"styles": {
 		"color": {
-			"text": "var:preset|color|accent-1"
+			"text": "var:preset|color|accent-2"
 		},
 		"typography": {
 			"fontSize": "var:preset|font-size|xx-large"

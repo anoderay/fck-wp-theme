@@ -1,0 +1,14 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Gedämpft (hell)",
+	"slug": "muted",
+	"blockTypes": [
+		"core/paragraph"
+	],
+	"styles": {
+		"color": {
+			"text": "var:preset|color|accent-4"
+		}
+	}
+}
