@@ -1,15 +1,15 @@
 /*
 Theme Name: Fechtclub Kassel
 Theme URI: https://www.fechtclub-kassel.de/
-Description: Child-Theme von Twenty Twenty-Five für den Fechtclub Kassel e.V.
-Template: twentytwentyfive
-Version: 0.3.0
+Description: Hybrid-Theme (klassische PHP-Templates + theme.json) für den Fechtclub Kassel e.V.
+Version: 0.4.0
 Requires at least: 6.7
 Requires PHP: 7.4
 Text Domain: fechtclub
 */
 
 /*
- * Bewusst (fast) leer: Das Aussehen steckt in theme.json und
- * styles/blocks/*.json. Hier nur, was sich dort nicht ausdrücken lässt.
+ * Das eigentliche Styling liegt in assets/css/main.css (per functions.php
+ * eingebunden). Die Design-Tokens (Farben, Schriften, Abstände) stehen in
+ * theme.json und werden hier als CSS-Variablen weiterverwendet.
  */
