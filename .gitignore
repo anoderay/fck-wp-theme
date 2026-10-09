@@ -1,0 +1,6 @@
+# Syncthing
+.stfolder/
+.stversions/
+.stignore
+*.sync-conflict-*
+~syncthing~*
