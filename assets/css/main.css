@@ -164,21 +164,28 @@ h4 {
 .site-nav {
 	display: flex;
 	align-items: center;
-	margin-inline-start: auto;
+	margin-inline: auto;
 }
-.site-nav__menu {
+/* Greift für das echte Menü (ul.site-nav__menu) und den Fallback
+   (wp_page_menu, verschachteltes ul ohne Klasse) gleichermaßen. */
+.site-nav ul {
 	list-style: none;
 	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 	gap: 1.5rem;
 	margin: 0;
 	padding: 0;
 }
-.site-nav__menu a {
+.site-nav li {
+	margin: 0;
+}
+.site-nav a {
 	color: var(--fck-contrast);
 	text-decoration: none;
 	font-size: 0.875rem;
 }
-.site-nav__menu a:hover {
+.site-nav a:hover {
 	color: var(--fck-navy);
 }
 .site-header__cta {
@@ -228,23 +235,27 @@ h4 {
 	.site-nav__toggle {
 		display: block;
 	}
-	.site-nav__menu {
+	.site-nav {
+		margin-inline: auto 0;
+	}
+	.site-nav ul {
 		display: none;
 		position: absolute;
 		top: 100%;
 		left: 0;
 		right: 0;
 		flex-direction: column;
+		align-items: stretch;
 		gap: 0;
 		background: var(--fck-white);
 		border-bottom: 1px solid var(--fck-gray-light);
 		padding: 0.5rem clamp(1rem, 4vw, 2rem) 1rem;
 		z-index: 20;
 	}
-	.site-nav.is-open .site-nav__menu {
+	.site-nav.is-open ul {
 		display: flex;
 	}
-	.site-nav__menu a {
+	.site-nav a {
 		display: block;
 		padding: 0.6rem 0;
 	}
