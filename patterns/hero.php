@@ -32,7 +32,7 @@
 <!-- wp:column {"verticalAlignment":"center","width":"42%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:42%"><!-- wp:group {"className":"fck-bars-frame","layout":{"type":"default"}} -->
 <div class="wp-block-group fck-bars-frame"><!-- wp:image {"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/hero-elisa.png' ) ); ?>" width="750" height="913" alt="Elisa vom Fechtclub Kassel mit Maske und Florett"/></figure>
+<figure class="wp-block-image size-large"><img alt=""/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column --></div>
