@@ -960,3 +960,45 @@ h6 {
 	}
 }
 
+/* --- Tabellen-Stil „Stundenplan" ----------------------------------------- */
+/* Dunkle Kopfzeile + gebänderte Zeilen. Registriert in functions.php, im
+   Editor unter Block → Stile wählbar. Setzt eine aktivierte Kopfzeile voraus;
+   ohne Kopfzeile entfällt nur der dunkle Balken, die Bänderung bleibt. */
+.wp-block-table.is-style-fck-stundenplan {
+	border: 1px solid var(--fck-gray-light);
+	border-radius: 8px;
+	overflow: hidden;
+}
+.wp-block-table.is-style-fck-stundenplan table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--fck-white);
+}
+/* Kopfzeile: blau, zentriert, in der Überschriften-Schrift, etwas größer.
+   border-bottom überschreibt die 3px-Linie aus WordPress' Standard-Tabellenstil. */
+.wp-block-table.is-style-fck-stundenplan thead {
+	border-bottom: 0;
+	background: var(--fck-navy);
+}
+.wp-block-table.is-style-fck-stundenplan thead th,
+.wp-block-table.is-style-fck-stundenplan thead td {
+	border: 0;
+	padding: 0.6rem 1.25rem;
+	color: var(--fck-white);
+	font-family: var(--fck-font-head);
+	font-size: 1.0625rem;
+	font-weight: 600;
+	text-align: center;
+}
+/* Datenzellen: schlicht, zentriert, ohne Gitterlinien. */
+.wp-block-table.is-style-fck-stundenplan tbody th,
+.wp-block-table.is-style-fck-stundenplan tbody td {
+	border: 0;
+	padding: 0.9rem 1.25rem;
+	text-align: center;
+}
+/* Jede zweite Zeile als kräftigeres Band. */
+.wp-block-table.is-style-fck-stundenplan tbody tr:nth-child(even) {
+	background: #e7eaf4;
+}
+

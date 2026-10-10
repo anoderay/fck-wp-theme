@@ -101,6 +101,24 @@ add_action(
 );
 
 /**
+ * Tabellen-Stil „Stundenplan": wählbar im Editor (Block → Stile). Erzeugt eine
+ * dunkle Kopfzeile und gebänderte Zeilen (siehe .is-style-fck-stundenplan in
+ * assets/css/main.css). Die Tabelle braucht dafür eine aktivierte Kopfzeile.
+ */
+add_action(
+	'init',
+	function () {
+		register_block_style(
+			'core/table',
+			array(
+				'name'  => 'fck-stundenplan',
+				'label' => __( 'Stundenplan', 'fechtclub' ),
+			)
+		);
+	}
+);
+
+/**
  * Versionsstring für Assets: Datei-Zeitstempel statt Theme-Version, damit der
  * Browser bei jeder Dateiänderung automatisch neu lädt (kein manuelles
  * Cache-Leeren im Dev nötig; bustet den Cache auch bei jedem Deploy).
