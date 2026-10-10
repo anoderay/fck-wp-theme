@@ -330,10 +330,10 @@ h6 {
 }
 
 /* --- Hero-Pattern -------------------------------------------------------- */
-/* Inhalte insgesamt höher: weniger Abstand oben als die Standard-Section. */
+/* Kompakter als die Standard-Section; oben/unten gleich, damit die Bild-Karte
+   mittig und mit gleich viel Platz darüber/darunter sitzt. */
 .fck-hero {
-	padding-top: clamp(1.5rem, 3vw, 2.5rem);
-	padding-bottom: clamp(2rem, 4vw, 3rem);
+	padding-block: clamp(2rem, 4vw, 3rem);
 }
 /* Kompakter als die volle Wide-Breite: ~960px. Ergibt bei 58/42 einen Text-
    block von ~560px und eine Karte von ~400px. */
@@ -356,8 +356,10 @@ h6 {
 }
 .fck-hero > .wp-block-columns:first-of-type > .wp-block-column:last-child {
 	flex-basis: 45% !important;
-	align-self: flex-start;   /* Karte oben ausrichten, dann gezielt absenken */
-	padding-top: 5px;         /* Bild/Karte leicht tiefer */
+	align-self: stretch;      /* Spalte auf volle Reihenhöhe … */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;  /* … und Karte darin vertikal mittig → gleich viel Platz oben/unten */
 }
 /* Wellen-Akzent oben links hinter dem Text.
    top folgt dem abgesenkten Text (120px Padding - 30px Versatz = 90px). */
@@ -514,6 +516,15 @@ h6 {
 }
 .entry-content > * {
 	margin-block: 1rem;
+}
+/* Überschriften bekommen mehr Luft nach oben und binden optisch an den
+   folgenden Text (kleinerer Abstand nach unten) – sonst wirkt es gedrungen. */
+.entry-content > :is(h1, h2, h3, h4, h5, h6) {
+	margin-top: clamp(1.75rem, 4vw, 2.75rem);
+	margin-bottom: 0.5rem;
+}
+.entry-content > :is(h5, h6) {
+	margin-top: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 /* --- Blog-Liste: Beitrags-Karten ----------------------------------------- */
@@ -797,6 +808,10 @@ h6 {
 }
 
 /* --- Startseiten-Abschnitt: „Was macht Fechten so besonders?" ------------ */
+/* Kompakteres vertikales Padding als die Standard-Section (oben = unten). */
+.fck-besonders.fck-section {
+	padding-block: clamp(2rem, 4vw, 3rem);
+}
 /* Breite an News-/Blog-Raster angleichen (statt der vollen Wide-Breite). */
 .fck-besonders .alignwide {
 	max-width: var(--fck-grid);
