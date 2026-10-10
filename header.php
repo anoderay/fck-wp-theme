@@ -54,6 +54,8 @@ defined( 'ABSPATH' ) || exit;
 					'container'      => false,
 					'depth'          => 2,
 					'fallback_cb'    => 'wp_page_menu',
+					// Nur relevant für den Fallback (wp_page_menu): Startseite ausblenden.
+					'exclude'        => (int) get_option( 'page_on_front' ),
 				)
 			);
 			?>

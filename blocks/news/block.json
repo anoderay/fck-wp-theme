@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fechtclub/news",
+	"version": "1.0.0",
+	"title": "Aktuelle News",
+	"category": "fechtclub",
+	"icon": "megaphone",
+	"description": "Zeigt die neuesten Beiträge als Karten – im selben Look wie die Blog-Übersicht. Anzahl einstellbar.",
+	"keywords": [ "news", "beiträge", "blog", "aktuelles" ],
+	"textdomain": "fechtclub",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Aktuelle News"
+		},
+		"count": {
+			"type": "number",
+			"default": 3
+		}
+	},
+	"editorScript": "fck-news-editor",
+	"render": "file:./render.php"
+}

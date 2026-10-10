@@ -36,6 +36,7 @@
 	--fck-font-head: var(--wp--preset--font-family--archivo, 'Archivo', 'Inter', system-ui, sans-serif);
 
 	--fck-wide: 1200px;
+	--fck-grid: 1040px; /* Breite des Beitrags-Rasters (Blog-Übersicht + News-Block) */
 	--fck-content: 720px;
 	--fck-gap: 1.5rem;
 }
@@ -509,6 +510,8 @@ h4 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: clamp(1.5rem, 3vw, 2rem);
+	max-width: var(--fck-grid);
+	margin-inline: auto;
 }
 .post-card {
 	display: flex;
@@ -551,6 +554,19 @@ h4 {
 .post-card__title a:hover {
 	color: var(--fck-navy);
 }
+.post-card__footer {
+	margin-top: auto;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding-top: 0.5rem;
+}
+.post-card__date {
+	margin: 0;
+	color: var(--fck-gray);
+	font-size: 0.8125rem;
+}
 .post-card__excerpt {
 	margin: 0;
 	color: var(--fck-gray);
@@ -562,9 +578,6 @@ h4 {
 	overflow: hidden;
 }
 .post-card__more {
-	margin-top: auto;
-	align-self: flex-start;
-	padding-top: 0.5rem;
 	color: var(--fck-navy);
 	font-weight: 500;
 	font-size: 0.875rem;
@@ -572,6 +585,18 @@ h4 {
 }
 .post-card__more:hover {
 	text-decoration: underline;
+}
+
+/* --- Startseiten-Block: Aktuelle News ------------------------------------ */
+/* Innencontainer auf die Rasterbreite kappen, damit Überschrift und Karten
+   bündig sind und so breit wie in der Blog-Übersicht (beide nutzen --fck-grid). */
+.fck-news > .fck-news__inner {
+	max-width: var(--fck-grid);
+}
+.fck-news__heading {
+	margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+	font-size: clamp(1.75rem, 3vw, 2.25rem);
+	line-height: 1.1;
 }
 
 /* Seiten-Navigation (Pagination) */
@@ -619,6 +644,61 @@ h4 {
 	.post-grid {
 		grid-template-columns: 1fr;
 	}
+}
+
+/* --- Einzelbeitrag: geteilter Kopf (Titel/Meta + Bild) ------------------- */
+.post-hero {
+	background: var(--fck-ink);
+	color: var(--fck-white);
+	padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+}
+.post-hero__inner {
+	max-width: 62rem;
+	margin-inline: auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(1.5rem, 4vw, 3rem);
+	align-items: center;
+}
+.post-hero__eyebrow {
+	margin: 0 0 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--fck-gray-light);
+}
+.post-hero__title {
+	margin: 0;
+	color: var(--fck-white);
+	font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+.post-hero__meta {
+	margin: 1rem 0 0;
+	color: var(--fck-gray-light);
+	font-size: 0.875rem;
+}
+.post-hero__media img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	border-radius: 8px;
+}
+@media (max-width: 781px) {
+	.post-hero__inner {
+		grid-template-columns: 1fr;
+	}
+}
+/* Einzelbeitrag: schmalere Lesespalte + kleinerer Abstand unter dem Kopf. */
+.single .site-main {
+	padding-top: clamp(1.5rem, 3vw, 2rem);
+}
+.single .entry-content {
+	max-width: 50rem;
+}
+.entry-content > :first-child {
+	margin-top: 0;
 }
 
 /* --- Fußbereich ---------------------------------------------------------- */

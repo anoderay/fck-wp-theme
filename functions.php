@@ -62,6 +62,45 @@ add_action(
 );
 
 /**
+ * Eigene Block-Kategorie, damit Theme-Blöcke im Inserter beieinanderstehen.
+ */
+add_filter(
+	'block_categories_all',
+	function ( $categories ) {
+		array_unshift(
+			$categories,
+			array(
+				'slug'  => 'fechtclub',
+				'title' => __( 'Fechtclub Kassel', 'fechtclub' ),
+				'icon'  => null,
+			)
+		);
+		return $categories;
+	}
+);
+
+/**
+ * Theme-eigene Blöcke registrieren.
+ *
+ * „Aktuelle News" ist ein dynamischer Block: Das Editor-Skript wird mit seinen
+ * wp-Abhängigkeiten angemeldet; die Frontend-Ausgabe erzeugt blocks/news/render.php.
+ */
+add_action(
+	'init',
+	function () {
+		wp_register_script(
+			'fck-news-editor',
+			get_theme_file_uri( 'blocks/news/index.js' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ),
+			fck_asset_version( 'blocks/news/index.js' ),
+			true
+		);
+
+		register_block_type( get_theme_file_path( 'blocks/news' ) );
+	}
+);
+
+/**
  * Versionsstring für Assets: Datei-Zeitstempel statt Theme-Version, damit der
  * Browser bei jeder Dateiänderung automatisch neu lädt (kein manuelles
  * Cache-Leeren im Dev nötig; bustet den Cache auch bei jedem Deploy).

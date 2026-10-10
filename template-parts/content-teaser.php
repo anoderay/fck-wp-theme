@@ -21,8 +21,11 @@ $fck_excerpt = get_the_excerpt();
 		<?php if ( '' !== $fck_excerpt ) : ?>
 			<p class="post-card__excerpt"><?php echo esc_html( $fck_excerpt ); ?></p>
 		<?php endif; ?>
-		<a class="post-card__more" href="<?php the_permalink(); ?>">
-			<?php esc_html_e( 'Weiterlesen', 'fechtclub' ); ?>
-		</a>
+		<div class="post-card__footer">
+			<time class="post-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
+			<a class="post-card__more" href="<?php the_permalink(); ?>">
+				<?php esc_html_e( 'Weiterlesen', 'fechtclub' ); ?>
+			</a>
+		</div>
 	</div>
 </article>
