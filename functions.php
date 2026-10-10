@@ -81,6 +81,18 @@ function fck_assets() {
 add_action( 'wp_enqueue_scripts', 'fck_assets' );
 
 /**
+ * 12 Beiträge pro Seite in Blog-Übersicht und Archiven.
+ */
+add_action(
+	'pre_get_posts',
+	function ( $query ) {
+		if ( ! is_admin() && $query->is_main_query() && ( $query->is_home() || $query->is_archive() ) ) {
+			$query->set( 'posts_per_page', 12 );
+		}
+	}
+);
+
+/**
  * Customizer: Header-Button (Zielseite + Beschriftung) ohne Code pflegbar.
  */
 add_action(

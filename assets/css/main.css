@@ -504,6 +504,123 @@ h4 {
 	margin-block: 1rem;
 }
 
+/* --- Blog-Liste: Beitrags-Karten ----------------------------------------- */
+.post-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: clamp(1.5rem, 3vw, 2rem);
+}
+.post-card {
+	display: flex;
+	flex-direction: column;
+	background: var(--fck-white);
+	border: 1px solid var(--fck-gray-light);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.post-card:hover {
+	box-shadow: 0 6px 20px rgba(16, 17, 25, 0.08);
+	transform: translateY(-2px);
+}
+.post-card__media {
+	display: block;
+}
+.post-card__media img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+}
+.post-card__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1.25rem;
+}
+.post-card__title {
+	margin: 0;
+	font-size: 1.125rem;
+	line-height: 1.2;
+}
+.post-card__title a {
+	color: var(--fck-contrast);
+	text-decoration: none;
+}
+.post-card__title a:hover {
+	color: var(--fck-navy);
+}
+.post-card__excerpt {
+	margin: 0;
+	color: var(--fck-gray);
+	font-size: 0.9375rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.post-card__more {
+	margin-top: auto;
+	align-self: flex-start;
+	padding-top: 0.5rem;
+	color: var(--fck-navy);
+	font-weight: 500;
+	font-size: 0.875rem;
+	text-decoration: none;
+}
+.post-card__more:hover {
+	text-decoration: underline;
+}
+
+/* Seiten-Navigation (Pagination) */
+.pagination {
+	margin-top: clamp(2rem, 5vw, 3rem);
+}
+.pagination .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5rem;
+}
+.pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.25rem;
+	height: 2.25rem;
+	padding: 0 0.5rem;
+	border: 1px solid var(--fck-gray-light);
+	border-radius: 4px;
+	color: var(--fck-contrast);
+	font-size: 0.875rem;
+	text-decoration: none;
+}
+.pagination a.page-numbers:hover {
+	border-color: var(--fck-navy);
+	color: var(--fck-navy);
+}
+.pagination .page-numbers.current {
+	background: var(--fck-navy);
+	border-color: var(--fck-navy);
+	color: var(--fck-white);
+}
+.pagination .page-numbers.dots {
+	border-color: transparent;
+}
+
+@media (max-width: 860px) {
+	.post-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 560px) {
+	.post-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* --- Fußbereich ---------------------------------------------------------- */
 .site-footer {
 	background: var(--fck-contrast);
