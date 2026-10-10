@@ -12,6 +12,16 @@ defined( 'ABSPATH' ) || exit;
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
+	<noscript>
+		<style>
+			/* Ohne JavaScript lässt sich das mobile Menü nicht aufklappen –
+			   daher dauerhaft (gestapelt) zeigen und den Toggle ausblenden. */
+			@media (max-width: 860px) {
+				.site-nav ul { display: flex !important; position: static; flex-direction: column; }
+				.site-nav__toggle { display: none; }
+			}
+		</style>
+	</noscript>
 </head>
 
 <body <?php body_class(); ?>>

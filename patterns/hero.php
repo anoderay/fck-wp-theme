@@ -3,7 +3,7 @@
  * Title: FCK Hero
  * Slug: fechtclub/hero
  * Categories: fechtclub
- * Description: Dunkler Startbereich mit Titel, Buttons, Bild und drei Vorteilen.
+ * Description: Dunkler Startbereich mit Titel, Buttons und Bild.
  * Inserter: true
  */
 ?>
@@ -35,26 +35,6 @@
 <figure class="wp-block-image size-large"><img alt=""/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:columns {"align":"wide"} -->
-<div class="wp-block-columns alignwide"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph {"className":"fck-star"} -->
-<p class="fck-star">Kostenloses Probetraining</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph {"className":"fck-star"} -->
-<p class="fck-star">Ein Sport für jede Altersklasse</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph {"className":"fck-star"} -->
-<p class="fck-star">Werde der nächste D’Artagnan</p>
-<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->

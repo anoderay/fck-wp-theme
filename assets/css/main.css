@@ -97,10 +97,6 @@ h4 {
 	padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
-.section {
-	padding-block: clamp(3rem, 7vw, 5.5rem);
-}
-
 /* --- Button -------------------------------------------------------------- */
 .button {
 	display: inline-block;
@@ -116,14 +112,6 @@ h4 {
 .button:hover {
 	background: var(--fck-navy-light);
 }
-.button--ghost {
-	background: transparent;
-	color: var(--fck-white);
-	box-shadow: inset 0 0 0 1px var(--fck-gray-light);
-}
-.button--ghost:hover {
-	background: rgba(255, 255, 255, 0.08);
-}
 
 /* --- Kopfleiste ---------------------------------------------------------- */
 .site-header {
@@ -138,13 +126,6 @@ h4 {
 	align-items: center;
 	justify-content: space-between;
 	gap: var(--fck-gap);
-}
-.site-header__title {
-	font-family: var(--fck-font-head);
-	font-weight: 800;
-	font-size: 1.125rem;
-	text-decoration: none;
-	color: var(--fck-contrast);
 }
 .site-header__logo {
 	display: inline-block;
@@ -327,21 +308,17 @@ h4 {
 	padding: clamp(3rem, 7vw, 5.5rem) clamp(1rem, 4vw, 2rem);
 }
 
-/* Constrained-Layout selbst definieren, damit die Block-Ausrichtung in diesem
-   klassischen Theme ÜBERALL zuverlässig greift (nicht nur im Hero) – robust
-   über die garantiert vorhandene .fck-section UND die .is-layout-constrained
-   Klasse, die WordPress constrained-Gruppen normalerweise gibt. */
-.fck-section > .alignwide,
-.is-layout-constrained > .alignwide {
+/* Abschnittsinhalt begrenzen/zentrieren. WordPress' eigene
+   .is-layout-constrained-Regeln erledigen das für constrained-Gruppen bereits;
+   diese .fck-section-Regeln sind die explizite, theme-eigene Garantie dafür. */
+.fck-section > .alignwide {
 	max-width: var(--fck-wide);
 	margin-inline: auto;
 }
-.fck-section > .alignfull,
-.is-layout-constrained > .alignfull {
+.fck-section > .alignfull {
 	max-width: none;
 }
-.fck-section > :not(.alignwide):not(.alignfull),
-.is-layout-constrained > :not(.alignwide):not(.alignfull) {
+.fck-section > :not(.alignwide):not(.alignfull) {
 	max-width: var(--fck-content);
 	margin-inline: auto;
 }
@@ -361,6 +338,7 @@ h4 {
 /* Inhalte insgesamt höher: weniger Abstand oben als die Standard-Section. */
 .fck-hero {
 	padding-top: clamp(1.5rem, 3vw, 2.5rem);
+	padding-bottom: clamp(2rem, 4vw, 3rem);
 }
 /* Kompakter als die volle Wide-Breite: ~960px. Ergibt bei 58/42 einen Text-
    block von ~560px und eine Karte von ~400px (wie im Original). */
@@ -433,9 +411,9 @@ h4 {
 .fck-bars-frame .wp-block-image,
 .fck-bars-frame figure {
 	position: absolute;
-	top: 0;
-	bottom: 0;
+	bottom: 15px;             /* Elisa anheben → gleich viel Luft über und unter ihr */
 	left: 50%;
+	height: 100%;
 	width: 125% !important;   /* Bild-Box-Breite relativ zur Karte (500/400) */
 	max-width: none !important;
 	margin: 0;
@@ -459,18 +437,18 @@ h4 {
 .fck-button-ghost .wp-block-button__link:hover {
 	background: rgba(255, 255, 255, 0.08);
 }
-.fck-star {
-	position: relative;
-	padding-inline-start: 1.5rem;
-	font-size: 0.875rem;
-	color: var(--fck-gray-light);
-	margin: 0;
-}
-.fck-star::before {
-	content: '★';
-	position: absolute;
-	left: 0;
-	color: var(--fck-navy-light);
+
+/* Hero auf Mobil: Spalten stapeln (sonst überstimmen die flex-basis-!important-
+   Regeln WordPress' Mobile-Stacking) und die Desktop-Offsets zurücksetzen. */
+@media (max-width: 781px) {
+	.fck-hero > .wp-block-columns:first-of-type > .wp-block-column:first-child,
+	.fck-hero > .wp-block-columns:first-of-type > .wp-block-column:last-child {
+		flex-basis: 100% !important;
+		padding-top: 0;
+	}
+	.fck-hero > .wp-block-columns:first-of-type > .wp-block-column:first-child::before {
+		display: none;
+	}
 }
 
 /* --- Inhalt / Blog ------------------------------------------------------- */

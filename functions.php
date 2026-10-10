@@ -60,12 +60,6 @@ add_action(
 );
 
 /**
- * Stylesheet und Skripte einbinden.
- *
- * Die Dekor-SVGs werden als CSS-Variablen gesetzt, weil der Theme-Pfad erst
- * zur Laufzeit bekannt ist.
- */
-/**
  * Versionsstring für Assets: Datei-Zeitstempel statt Theme-Version, damit der
  * Browser bei jeder Dateiänderung automatisch neu lädt (kein manuelles
  * Cache-Leeren im Dev nötig; bustet den Cache auch bei jedem Deploy).
@@ -75,15 +69,11 @@ function fck_asset_version( $relative_path ) {
 	return file_exists( $file ) ? (string) filemtime( $file ) : wp_get_theme()->get( 'Version' );
 }
 
+/**
+ * Stylesheet und Navigations-Skript einbinden.
+ */
 function fck_assets() {
 	wp_enqueue_style( 'fck-main', get_theme_file_uri( 'assets/css/main.css' ), array(), fck_asset_version( 'assets/css/main.css' ) );
-
-	$decor = get_theme_file_uri( 'assets/decor/' );
-	wp_add_inline_style(
-		'fck-main',
-		':root{--fck-bars:url("' . esc_url( $decor . 'bars.svg' ) . '");--fck-waves:url("' . esc_url( $decor . 'waves.svg' ) . '");}'
-	);
-
 	wp_enqueue_script( 'fck-nav', get_theme_file_uri( 'assets/js/nav.js' ), array(), fck_asset_version( 'assets/js/nav.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'fck_assets' );
