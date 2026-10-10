@@ -24,7 +24,7 @@
 :root {
 	--fck-white: var(--wp--preset--color--base, #ffffff);
 	--fck-contrast: var(--wp--preset--color--contrast, #101119);
-	--fck-navy: var(--wp--preset--color--accent-1, #2f4075);
+	--fck-navy: var(--wp--preset--color--accent-1, #183e7b);
 	--fck-navy-light: var(--wp--preset--color--accent-2, #4d69b8);
 	--fck-lavender: var(--wp--preset--color--accent-3, #f7f6fb);
 	--fck-gray: var(--wp--preset--color--accent-4, #6b7080);
@@ -173,20 +173,29 @@ h4 {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 1.5rem;
+	gap: 0.75rem;
 	margin: 0;
 	padding: 0;
 }
 .site-nav li {
 	margin: 0;
 }
+/* Nav-Links wie auf der Live-Seite: medium, Pill-Hover (0.35s). */
 .site-nav a {
+	display: inline-block;
 	color: var(--fck-contrast);
 	text-decoration: none;
 	font-size: 0.875rem;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	padding: 0.75rem 1rem;
+	border-radius: 4px;
+	transition: background-color 0.35s ease, color 0.35s ease;
 }
-.site-nav a:hover {
-	color: var(--fck-navy);
+.site-nav a:hover,
+.site-nav a:focus-visible {
+	background-color: var(--fck-contrast);
+	color: var(--fck-white);
 }
 .site-header__cta {
 	flex-shrink: 0;
@@ -257,7 +266,7 @@ h4 {
 	}
 	.site-nav a {
 		display: block;
-		padding: 0.6rem 0;
+		padding: 0.6rem 0.75rem;
 	}
 	.site-header {
 		position: relative;
@@ -297,22 +306,33 @@ h4 {
 	margin: 0 0 1rem;
 }
 .fck-bars-frame {
-	aspect-ratio: 4 / 5;
-	border-radius: 6px;
+	position: relative;
+	aspect-ratio: 5 / 6;
+	border-radius: 8px;
 	overflow: hidden;
-	background: var(--fck-card-dark) var(--fck-bars) center / cover no-repeat;
-	box-shadow: 0 0 0 1px rgba(201, 204, 216, 0.15);
+	background: linear-gradient(165deg, var(--fck-navy) 0%, var(--fck-ink) 100%);
+	box-shadow: 0 0 0 1px rgba(201, 204, 216, 0.12);
+}
+.fck-bars-frame::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: var(--fck-bars) center / 140% no-repeat;
+	opacity: 0.1;
 }
 .fck-bars-frame .wp-block-image,
 .fck-bars-frame figure {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	margin: 0;
 }
+/* Freisteller steht unten auf dem Panel auf, wird nicht beschnitten. */
 .fck-bars-frame img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
+	object-position: bottom center;
 }
 .is-style-secondary .wp-block-button__link,
 .fck-button-ghost .wp-block-button__link {

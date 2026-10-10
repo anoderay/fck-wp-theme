@@ -49,8 +49,16 @@ defined( 'ABSPATH' ) || exit;
 			?>
 		</nav>
 
-		<a class="site-header__cta button" href="<?php echo esc_url( home_url( '/probetraining' ) ); ?>">
-			<?php esc_html_e( 'Kostenloses Probetraining', 'fechtclub' ); ?>
+		<?php
+		$fck_cta_url  = home_url( '/probetraining' );
+		$fck_cta_page = (int) get_theme_mod( 'fck_cta_page', 0 );
+		if ( $fck_cta_page && get_permalink( $fck_cta_page ) ) {
+			$fck_cta_url = get_permalink( $fck_cta_page );
+		}
+		$fck_cta_label = get_theme_mod( 'fck_cta_label', __( 'Kostenloses Probetraining', 'fechtclub' ) );
+		?>
+		<a class="site-header__cta button" href="<?php echo esc_url( $fck_cta_url ); ?>">
+			<?php echo esc_html( $fck_cta_label ); ?>
 		</a>
 
 	</div>
