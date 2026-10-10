@@ -17,7 +17,16 @@ defined( 'ABSPATH' ) || exit;
 			/* Ohne JavaScript lässt sich das mobile Menü nicht aufklappen –
 			   daher dauerhaft (gestapelt) zeigen und den Toggle ausblenden. */
 			@media (max-width: 860px) {
-				.site-nav ul { display: flex !important; position: static; flex-direction: column; }
+				.site-nav ul {
+					display: flex !important;
+					position: static;
+					flex-direction: column;
+					max-height: none;
+					overflow: visible;
+					opacity: 1;
+					transform: none;
+					pointer-events: auto;
+				}
 				.site-nav__toggle { display: none; }
 			}
 		</style>

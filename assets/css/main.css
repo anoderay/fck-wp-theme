@@ -232,15 +232,20 @@ h6 {
 	flex-shrink: 0;
 }
 
-/* Mobiler Toggle */
+/* Mobiler Toggle: navy-farbener Button mit weißen Balken. */
 .site-nav__toggle {
 	display: none;
-	width: 2.5rem;
-	height: 2.5rem;
+	width: 2.75rem;
+	height: 2.75rem;
 	padding: 0;
 	border: 0;
-	background: transparent;
+	border-radius: 6px;
+	background: var(--fck-navy);
 	cursor: pointer;
+	transition: background-color 0.15s ease;
+}
+.site-nav__toggle:hover {
+	background: var(--fck-navy-light);
 }
 .site-nav__icon,
 .site-nav__icon::before,
@@ -248,8 +253,9 @@ h6 {
 	display: block;
 	width: 22px;
 	height: 2px;
-	background: var(--fck-contrast);
-	transition: transform 0.2s ease;
+	border-radius: 2px;
+	background: var(--fck-white);
+	transition: transform 0.2s ease, top 0.2s ease, background-color 0.2s ease;
 }
 .site-nav__icon {
 	position: relative;
@@ -267,6 +273,18 @@ h6 {
 .site-nav__icon::after {
 	top: 7px;
 }
+/* Offen: Balken werden zum X. */
+.site-nav.is-open .site-nav__icon {
+	background: transparent;
+}
+.site-nav.is-open .site-nav__icon::before {
+	top: 0;
+	transform: rotate(45deg);
+}
+.site-nav.is-open .site-nav__icon::after {
+	top: 0;
+	transform: rotate(-45deg);
+}
 
 @media (max-width: 860px) {
 	.site-header__cta {
@@ -278,8 +296,10 @@ h6 {
 	.site-nav {
 		margin-inline: auto 0;
 	}
+	/* Dropdown bleibt im DOM und klappt per max-height/opacity smooth auf
+	   (display lässt sich nicht animieren). box-sizing: border-box sorgt dafür,
+	   dass max-height:0 auch das Padding wegklappt. */
 	.site-nav ul {
-		display: none;
 		position: absolute;
 		top: 100%;
 		left: 0;
@@ -291,9 +311,18 @@ h6 {
 		border-bottom: 1px solid var(--fck-gray-light);
 		padding: 0.5rem clamp(1rem, 4vw, 2rem) 1rem;
 		z-index: 20;
+		max-height: 0;
+		overflow: hidden;
+		opacity: 0;
+		transform: translateY(-0.5rem);
+		pointer-events: none;
+		transition: max-height 0.42s ease, opacity 0.35s ease, transform 0.42s ease;
 	}
 	.site-nav.is-open ul {
-		display: flex;
+		max-height: 70vh;
+		opacity: 1;
+		transform: translateY(0);
+		pointer-events: auto;
 	}
 	/* Menüpunkte im Hamburger-Menü zentrieren; der Akzent-Balken bleibt
 	   mittig (Desktop-Regel greift) und sitzt so unter dem zentrierten Text. */
@@ -459,6 +488,54 @@ h6 {
 	.fck-bars-frame figure {
 		width: 100% !important;
 	}
+}
+
+/* --- Startbereich: Medien-Hero (Bild-Karte links, Text rechts) ----------- */
+/* Zweiter Hero-Typ auf hellem Grund: links eine Karte mit Bild, das auf das
+   Vimeo-Promovideo verlinkt (nur ein Bild, kein eingebetteter Player);
+   rechts der Textblock. Das Bild wird im Editor eingesetzt. */
+.fck-hero-media {
+	padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+.fck-hero-media > .wp-block-columns {
+	max-width: 60rem;
+	margin-inline: auto;
+}
+.fck-hero-media .fck-eyebrow {
+	color: var(--fck-navy);
+}
+.fck-hero-media .wp-block-heading {
+	font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+	margin: 0 0 1.25rem;
+}
+/* Video-Karte: rechteckiges Thumbnail (16:9), abgerundet. Der Play-Button ist
+   bereits Teil des Bildes; hier kommt nur noch Rahmen/Schatten dazu. */
+.fck-video-card {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	border-radius: 10px;
+	overflow: hidden;
+	background: var(--fck-contrast);
+	box-shadow: 0 12px 30px rgba(16, 17, 25, 0.14);
+	transition: box-shadow 0.2s ease;
+}
+.fck-video-card:hover {
+	box-shadow: 0 16px 36px rgba(16, 17, 25, 0.2);
+}
+.fck-video-card .wp-block-image {
+	position: absolute;
+	inset: 0;
+	margin: 0;
+	height: 100%;
+}
+.fck-video-card .wp-block-image a,
+.fck-video-card .wp-block-image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.fck-video-card .wp-block-image img {
+	object-fit: cover;
 }
 
 /* --- Seiten-Titelbanner (Unterseiten, nicht Startseite) ------------------ */
