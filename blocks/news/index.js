@@ -13,7 +13,6 @@
 		edit: function ( props ) {
 			var attributes   = props.attributes;
 			var setAttributes = props.setAttributes;
-			var blockProps   = blockEditor.useBlockProps();
 
 			var controls = el(
 				blockEditor.InspectorControls,
@@ -41,14 +40,13 @@
 				)
 			);
 
-			var preview = el(
-				'div',
-				blockProps,
-				el( ServerSideRender, {
-					block: 'fechtclub/news',
-					attributes: attributes,
-				} )
-			);
+			// Kein eigener useBlockProps-Wrapper: render.php liefert bereits die
+			// Hülle (get_block_wrapper_attributes), die ServerSideRender im Editor
+			// mitrendert – ein zweiter Wrapper würde Blockklasse/alignfull doppeln.
+			var preview = el( ServerSideRender, {
+				block: 'fechtclub/news',
+				attributes: attributes,
+			} );
 
 			return el( element.Fragment, null, controls, preview );
 		},
