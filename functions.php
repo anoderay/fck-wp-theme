@@ -56,6 +56,8 @@ add_action(
 			'fechtclub',
 			array( 'label' => __( 'Fechtclub Kassel', 'fechtclub' ) )
 		);
+		// Auszug-Feld für Seiten aktivieren – dient als Eyebrow im Titelbanner.
+		add_post_type_support( 'page', 'excerpt' );
 	}
 );
 

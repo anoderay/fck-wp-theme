@@ -6,6 +6,7 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+get_template_part( 'template-parts/page-header' );
 ?>
 <main class="site-main">
 	<div class="wrap">
