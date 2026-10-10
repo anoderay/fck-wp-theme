@@ -203,6 +203,21 @@
 					"fontSize": "var:preset|font-size|x-large"
 				}
 			},
+			"h4": {
+				"typography": {
+					"fontSize": "1.25rem"
+				}
+			},
+			"h5": {
+				"typography": {
+					"fontSize": "1.0625rem"
+				}
+			},
+			"h6": {
+				"typography": {
+					"fontSize": "0.9375rem"
+				}
+			},
 			"button": {
 				"color": {
 					"background": "var:preset|color|accent-1",

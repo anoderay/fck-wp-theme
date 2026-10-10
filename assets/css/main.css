@@ -71,7 +71,9 @@ a {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
 	font-family: var(--fck-font-head);
 	font-weight: 800;
 	line-height: 1.1;
