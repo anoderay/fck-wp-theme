@@ -39,6 +39,16 @@ while ( have_posts() ) :
 					<?php the_content(); ?>
 				</div>
 			</article>
+			<?php
+			$fck_posts_page = (int) get_option( 'page_for_posts' );
+			if ( $fck_posts_page && get_permalink( $fck_posts_page ) ) :
+				/* translators: %s: Titel der Beitragsseite (z. B. „News“). */
+				$fck_back_label = sprintf( __( 'Mehr %s', 'fechtclub' ), get_the_title( $fck_posts_page ) );
+				?>
+				<p class="post-nav-back">
+					<a class="button" href="<?php echo esc_url( get_permalink( $fck_posts_page ) ); ?>"><?php echo esc_html( $fck_back_label ); ?></a>
+				</p>
+			<?php endif; ?>
 		</div>
 	</main>
 	<?php

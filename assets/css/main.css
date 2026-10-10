@@ -356,10 +356,7 @@ h6 {
 }
 .fck-hero > .wp-block-columns:first-of-type > .wp-block-column:last-child {
 	flex-basis: 45% !important;
-	align-self: stretch;      /* Spalte auf volle Reihenhöhe … */
-	display: flex;
-	flex-direction: column;
-	justify-content: center;  /* … und Karte darin vertikal mittig → gleich viel Platz oben/unten */
+	align-self: center;       /* Karte vertikal mittig → gleich viel Platz oben/unten */
 }
 /* Wellen-Akzent oben links hinter dem Text.
    top folgt dem abgesenkten Text (120px Padding - 30px Versatz = 90px). */
@@ -721,6 +718,11 @@ h6 {
 }
 .entry-content > :first-child {
 	margin-top: 0;
+}
+/* „Mehr News“-Button am Ende des Beitrags: linksbündig mit dem Text. */
+.post-nav-back {
+	max-width: 50rem;
+	margin: clamp(1.5rem, 3vw, 2.25rem) auto 0;
 }
 
 /* --- Fußbereich ---------------------------------------------------------- */
