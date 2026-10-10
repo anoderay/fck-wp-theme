@@ -442,6 +442,12 @@ h6 {
 	.fck-hero > .wp-block-columns:first-of-type > .wp-block-column:first-child::before {
 		display: none;
 	}
+	/* Seitlichen Freisteller-Überstand (125%) entfernen – sonst ragt das Bild
+	   über den Viewport und erzeugt horizontales Scrollen. */
+	.fck-bars-frame .wp-block-image,
+	.fck-bars-frame figure {
+		width: 100% !important;
+	}
 }
 
 /* --- Seiten-Titelbanner (Unterseiten, nicht Startseite) ------------------ */
