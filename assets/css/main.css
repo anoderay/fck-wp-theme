@@ -120,6 +120,18 @@ h6 {
 .button:hover {
 	background: var(--fck-navy-light);
 }
+/* Umrandete Variante: weißer Grund, kräftig-graue Kontur und Schrift (an den
+   Karten orientiert, aber satter). Beim Hover dunkeln Kontur und Text ab. */
+.button--outline {
+	background: var(--fck-white);
+	color: var(--fck-gray);
+	box-shadow: inset 0 0 0 1px var(--fck-gray);
+}
+.button--outline:hover {
+	background: var(--fck-white);
+	color: var(--fck-contrast);
+	box-shadow: inset 0 0 0 1px var(--fck-contrast);
+}
 
 /* --- Kopfleiste ---------------------------------------------------------- */
 .site-header {
@@ -356,7 +368,10 @@ h6 {
 }
 .fck-hero > .wp-block-columns:first-of-type > .wp-block-column:last-child {
 	flex-basis: 45% !important;
-	align-self: center;       /* Karte vertikal mittig → gleich viel Platz oben/unten */
+	align-self: stretch;       /* Spalte auf volle Reihenhöhe … */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;   /* … Karte darin vertikal mittig → gleich viel Platz oben/unten */
 }
 /* Wellen-Akzent oben links hinter dem Text.
    top folgt dem abgesenkten Text (120px Padding - 30px Versatz = 90px). */
@@ -388,6 +403,8 @@ h6 {
    transparenten Bereiche durch. */
 .fck-bars-frame {
 	position: relative;
+	flex: none;                 /* in der Flex-Spalte nicht schrumpfen (sonst Höhen-Kollaps) */
+	width: 100%;                /* definite Breite → aspect-ratio liefert Höhe */
 	aspect-ratio: 83 / 123;     /* Kartenmaße: 415×615 */
 	max-width: 415px;
 	margin-inline: auto;
@@ -616,6 +633,40 @@ h6 {
 	margin: 0 0 clamp(1.5rem, 3vw, 2rem);
 	font-size: clamp(1.75rem, 3vw, 2.25rem);
 	line-height: 1.1;
+}
+/* „Mehr News“-Button unter dem Karten-Raster: sitzt mittig auf einer dünnen
+   Trennlinie, die über die Rasterbreite läuft – so ist er klar am Abschnitt
+   verankert und wirkt nicht mehr verloren. */
+.fck-news__more {
+	position: relative;
+	margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+	text-align: center;
+}
+.fck-news__more::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: var(--fck-gray-light);
+}
+.fck-news__more .button {
+	position: relative;
+	padding: 0.85rem 1.75rem;
+	font-size: 0.9375rem;
+	/* Weißer Ring deckt die Linie rund um den Button, damit ein Spalt bleibt;
+	   die Kontur hat dieselbe Farbe wie die Trennlinie. */
+	box-shadow: 0 0 0 8px var(--fck-white), inset 0 0 0 1px var(--fck-gray-light);
+}
+.fck-news__more .button:hover {
+	box-shadow: 0 0 0 8px var(--fck-white), inset 0 0 0 1px var(--fck-contrast);
+}
+/* Unteren Abschnitts-Abstand an den Button-Abstand angleichen, damit der
+   Button gleichmäßig umschlossen ist (die Trennung zum nächsten, dunklen
+   Abschnitt liefert dessen eigenes oberes Padding). */
+.fck-news {
+	padding-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 /* Seiten-Navigation (Pagination) */

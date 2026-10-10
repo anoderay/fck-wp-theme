@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hero-repro",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8099", "--directory", "/tmp/claude-1000/-home-meyer-Dokumente-fck-website-theme/11cc9dee-1540-40a0-ab70-0b067e65513d/scratchpad/hero-repro"],
+      "port": 8099
+    }
+  ]
+}

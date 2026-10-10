@@ -46,6 +46,14 @@ $fck_wrapper = get_block_wrapper_attributes( array( 'class' => 'fck-section fck-
 			endwhile;
 			?>
 		</div>
+		<?php
+		$fck_posts_page = (int) get_option( 'page_for_posts' );
+		if ( $fck_posts_page && get_permalink( $fck_posts_page ) ) :
+			?>
+			<p class="fck-news__more">
+				<a class="button button--outline" href="<?php echo esc_url( get_permalink( $fck_posts_page ) ); ?>"><?php esc_html_e( 'Mehr News', 'fechtclub' ); ?></a>
+			</p>
+		<?php endif; ?>
 	</div>
 </section>
 <?php
