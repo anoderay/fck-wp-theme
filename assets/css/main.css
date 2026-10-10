@@ -275,25 +275,12 @@ h4 {
 	.site-nav.is-open ul {
 		display: flex;
 	}
+	/* Menüpunkte im Hamburger-Menü zentrieren; der Akzent-Balken bleibt
+	   mittig (Desktop-Regel greift) und sitzt so unter dem zentrierten Text. */
 	.site-nav a {
 		display: block;
 		padding: 0.6rem 0.75rem;
-	}
-	/* Im Hamburger-Menü sind die Zeilen volle Breite: Balken links unter
-	   den Text setzen statt mittig in der Zeile. */
-	.site-nav a::after {
-		left: 0.75rem;
-		right: auto;
-		bottom: 0.3rem;
-		transform: scaleX(0);
-		transform-origin: left center;
-	}
-	.site-nav a:hover::after,
-	.site-nav a:focus-visible::after,
-	.site-nav .current-menu-item > a::after,
-	.site-nav .current_page_item > a::after,
-	.site-nav .current-menu-ancestor > a::after {
-		transform: scaleX(1);
+		text-align: center;
 	}
 	.site-header {
 		position: relative;
