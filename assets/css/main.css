@@ -368,10 +368,7 @@ h6 {
 }
 .fck-hero > .wp-block-columns:first-of-type > .wp-block-column:last-child {
 	flex-basis: 45% !important;
-	align-self: stretch;       /* Spalte auf volle Reihenhöhe … */
-	display: flex;
-	flex-direction: column;
-	justify-content: center;   /* … Karte darin vertikal mittig → gleich viel Platz oben/unten */
+	align-self: center;       /* Karte vertikal mittig → gleich viel Platz oben/unten */
 }
 /* Wellen-Akzent oben links hinter dem Text.
    top folgt dem abgesenkten Text (120px Padding - 30px Versatz = 90px). */
@@ -403,8 +400,6 @@ h6 {
    transparenten Bereiche durch. */
 .fck-bars-frame {
 	position: relative;
-	flex: none;                 /* in der Flex-Spalte nicht schrumpfen (sonst Höhen-Kollaps) */
-	width: 100%;                /* definite Breite → aspect-ratio liefert Höhe */
 	aspect-ratio: 83 / 123;     /* Kartenmaße: 415×615 */
 	max-width: 415px;
 	margin-inline: auto;
@@ -634,15 +629,16 @@ h6 {
 	font-size: clamp(1.75rem, 3vw, 2.25rem);
 	line-height: 1.1;
 }
-/* „Mehr News“-Button unter dem Karten-Raster: sitzt mittig auf einer dünnen
-   Trennlinie, die über die Rasterbreite läuft – so ist er klar am Abschnitt
-   verankert und wirkt nicht mehr verloren. */
-.fck-news__more {
+/* „Mehr News“-Button (Startseiten-Block wie Einzelbeitrag): sitzt mittig auf
+   einer dünnen Trennlinie, die über die ganze Breite läuft – so ist er klar
+   verankert und wirkt nicht verloren. */
+.fck-news__more,
+.post-nav-back {
 	position: relative;
-	margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
 	text-align: center;
 }
-.fck-news__more::before {
+.fck-news__more::before,
+.post-nav-back::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -651,7 +647,8 @@ h6 {
 	height: 1px;
 	background: var(--fck-gray-light);
 }
-.fck-news__more .button {
+.fck-news__more .button,
+.post-nav-back .button {
 	position: relative;
 	padding: 0.85rem 1.75rem;
 	font-size: 0.9375rem;
@@ -659,8 +656,12 @@ h6 {
 	   die Kontur hat dieselbe Farbe wie die Trennlinie. */
 	box-shadow: 0 0 0 8px var(--fck-white), inset 0 0 0 1px var(--fck-gray-light);
 }
-.fck-news__more .button:hover {
+.fck-news__more .button:hover,
+.post-nav-back .button:hover {
 	box-shadow: 0 0 0 8px var(--fck-white), inset 0 0 0 1px var(--fck-contrast);
+}
+.fck-news__more {
+	margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
 }
 /* Unteren Abschnitts-Abstand an den Button-Abstand angleichen, damit der
    Button gleichmäßig umschlossen ist (die Trennung zum nächsten, dunklen
@@ -770,10 +771,10 @@ h6 {
 .entry-content > :first-child {
 	margin-top: 0;
 }
-/* „Mehr News“-Button am Ende des Beitrags: linksbündig mit dem Text. */
+/* „Mehr News“-Button am Ende des Beitrags: Linie über die Lesespalte. */
 .post-nav-back {
 	max-width: 50rem;
-	margin: clamp(1.5rem, 3vw, 2.25rem) auto 0;
+	margin: clamp(2rem, 4vw, 3rem) auto 0;
 }
 
 /* --- Fußbereich ---------------------------------------------------------- */

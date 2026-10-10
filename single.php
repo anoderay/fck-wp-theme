@@ -46,7 +46,7 @@ while ( have_posts() ) :
 				$fck_back_label = sprintf( __( 'Mehr %s', 'fechtclub' ), get_the_title( $fck_posts_page ) );
 				?>
 				<p class="post-nav-back">
-					<a class="button" href="<?php echo esc_url( get_permalink( $fck_posts_page ) ); ?>"><?php echo esc_html( $fck_back_label ); ?></a>
+					<a class="button button--outline" href="<?php echo esc_url( get_permalink( $fck_posts_page ) ); ?>"><?php echo esc_html( $fck_back_label ); ?></a>
 				</p>
 			<?php endif; ?>
 		</div>
