@@ -404,7 +404,7 @@ h6 {
 .fck-bars-frame .wp-block-image,
 .fck-bars-frame figure {
 	position: absolute;
-	bottom: 15px;             /* Foto anheben → gleich viel Luft über und unter dem Freisteller */
+	bottom: 0;                /* Freisteller steht bündig auf der Kartenunterkante */
 	left: 50%;
 	height: 100%;
 	width: 125% !important;   /* Bild-Box-Breite relativ zur Karte (500/400) */
