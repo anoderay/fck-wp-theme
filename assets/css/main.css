@@ -437,7 +437,7 @@ h4 {
 	line-height: 0;
 }
 .site-footer__logo img {
-	width: clamp(110px, 18vw, 150px);
+	width: clamp(88px, 14.4vw, 120px);
 	height: auto;
 }
 .site-footer__menu {
