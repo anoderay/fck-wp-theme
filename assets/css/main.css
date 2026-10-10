@@ -781,3 +781,81 @@ h4 {
 		text-align: center;
 	}
 }
+
+/* --- Startseiten-Abschnitt: „Was macht Fechten so besonders?" ------------ */
+/* Breite an News-/Blog-Raster angleichen (statt der vollen Wide-Breite). */
+.fck-besonders .alignwide {
+	max-width: var(--fck-grid);
+}
+/* Kopfzeile: Überschrift links, Button rechts, vertikal zentriert. */
+.fck-besonders__head {
+	margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.fck-besonders__title {
+	position: relative;
+	margin: 0;
+	font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+/* Sonar-Grafik oben links hinter der Überschrift (wie im Titelbanner). */
+.fck-besonders__title::before {
+	content: '';
+	position: absolute;
+	top: -0.4em;
+	left: -0.2em;
+	width: 118px;
+	height: 119px;
+	background: url('../decor/title-sonar.svg') center / contain no-repeat;
+	z-index: -1;
+	pointer-events: none;
+}
+
+/* Feature-Karten: drei gleich hohe dunkle Karten. */
+.fck-features {
+	gap: clamp(1.5rem, 3vw, 2rem);
+}
+.fck-features .wp-block-column.fck-feature {
+	background: var(--fck-card-dark);
+	border-radius: 12px;
+	padding: clamp(1.5rem, 2.5vw, 2rem);
+}
+/* Icon als CSS-Hintergrund – hält das Pattern-Markup sauber und lädt dank
+   add_editor_style auch im Block-Editor. */
+.fck-feature::before {
+	content: '';
+	display: block;
+	width: 48px;
+	height: 48px;
+	margin-bottom: 1.25rem;
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.fck-feature--koerper::before {
+	background-image: url('../icons/muskel-gluebirne.svg');
+}
+.fck-feature--tradition::before {
+	background-image: url('../icons/schwerter.svg');
+}
+.fck-feature--wettkampf::before {
+	background-image: url('../icons/maske.svg');
+}
+.fck-feature h3 {
+	margin: 0 0 0.6rem;
+	font-size: 1.125rem;
+	line-height: 1.2;
+	color: var(--fck-white);
+}
+.fck-feature p {
+	margin: 0;
+	color: var(--fck-gray-light);
+}
+
+/* Mobil: Button nicht rechtsbündig, sondern linksbündig unter der Überschrift. */
+@media (max-width: 781px) {
+	.fck-besonders__head .wp-block-buttons {
+		justify-content: flex-start;
+	}
+	.fck-besonders__title::before {
+		display: none;
+	}
+}
