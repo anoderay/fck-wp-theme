@@ -861,3 +861,102 @@ h6 {
 		display: none;
 	}
 }
+
+/* --- Verein: Vorstand-Karten --------------------------------------------- */
+.fck-vorstand {
+	margin-block: clamp(2.5rem, 6vw, 4rem);
+}
+.fck-vorstand > h3 {
+	margin: clamp(2rem, 4vw, 3rem) 0 clamp(1rem, 2vw, 1.25rem);
+}
+/* Erste Gruppen-Überschrift braucht oben keinen zusätzlichen Abstand. */
+.fck-vorstand > h3:first-child {
+	margin-top: 0;
+}
+.fck-vorstand__row {
+	gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+/* Foto-Karte: Hochformat, abgerundet. Vor dem Foto dient die dunkle Fläche
+   als Platzhalter; Foto und Caption liegen absolut übereinander. */
+.fck-vorstand__card {
+	position: relative;
+	aspect-ratio: 3 / 4;
+	border-radius: 12px;
+	overflow: hidden;
+	background: var(--fck-card-dark);
+}
+.fck-vorstand__card .fck-vorstand__photo {
+	position: absolute;
+	inset: 0;
+	margin: 0;
+	height: 100%;
+}
+.fck-vorstand__card .fck-vorstand__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/* Ohne Foto nur die dunkle Kartenfläche zeigen (kein „kaputtes Bild"-Symbol). */
+.fck-vorstand__card .fck-vorstand__photo img:not([src]) {
+	display: none;
+}
+/* Name + Rolle unten, mit dunklem Verlauf für Lesbarkeit auf dem Foto. */
+.fck-vorstand__caption {
+	position: absolute;
+	inset: auto 0 0 0;
+	padding: 1.25rem;
+	background: linear-gradient(0deg, rgba(7, 10, 19, 0.9) 0%, rgba(7, 10, 19, 0.1) 75%, rgba(7, 10, 19, 0) 100%);
+}
+.fck-vorstand__caption h4 {
+	margin: 0;
+}
+.fck-vorstand__caption p {
+	margin: 0.2rem 0 0;
+}
+/* Kontakt (Telefon/E-Mail): verborgen, erscheint beim Hover bzw. Tastatur-Fokus
+   der Karte. „Sofern angegeben" – wer keinen Kontakt hat, löscht die Gruppe. */
+.fck-vorstand__contact {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	margin-top: 0;
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+.fck-vorstand__card:hover .fck-vorstand__contact,
+.fck-vorstand__card:focus-within .fck-vorstand__contact {
+	max-height: 6rem;
+	margin-top: 0.5rem;
+	opacity: 1;
+}
+.fck-vorstand__contact p {
+	margin: 0;
+}
+.fck-vorstand__contact a {
+	color: var(--fck-white);
+	font-size: 0.875rem;
+	text-decoration: none;
+}
+.fck-vorstand__contact a:hover {
+	text-decoration: underline;
+}
+/* Ohne Hover (Touch-Geräte) Kontakt dauerhaft zeigen. */
+@media (hover: none) {
+	.fck-vorstand__contact {
+		max-height: 6rem;
+		margin-top: 0.5rem;
+		opacity: 1;
+	}
+}
+/* Responsive: Sobald die Spalten stapeln, würde jede Karte die volle Breite
+   einnehmen und bei 3:4 riesig werden – daher hier die Breite deckeln und
+   zentrieren. */
+@media (max-width: 781px) {
+	.fck-vorstand__card {
+		max-width: 260px;
+		margin-inline: auto;
+	}
+}
+
