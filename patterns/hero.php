@@ -11,7 +11,7 @@
 <div class="wp-block-group alignfull fck-section fck-hero has-base-color has-ink-background-color has-text-color has-background"><!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%"><!-- wp:paragraph {"className":"fck-eyebrow"} -->
-<p class="fck-eyebrow">Fechtclub Kassel</p>
+<p class="fck-eyebrow">Fechtclub Kassel e.V.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1} -->
