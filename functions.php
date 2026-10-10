@@ -34,7 +34,8 @@ function fck_setup() {
 
 	register_nav_menus(
 		array(
-			'primary' => __( 'Hauptnavigation', 'fechtclub' ),
+			'primary'   => __( 'Hauptnavigation', 'fechtclub' ),
+			'footernav' => __( 'Footer-Navigation', 'fechtclub' ),
 		)
 	);
 
@@ -131,6 +132,37 @@ add_action(
 				'section'        => 'fck_header_cta',
 				'type'           => 'dropdown-pages',
 				'allow_addition' => true,
+			)
+		);
+	}
+);
+
+/**
+ * Customizer: Footer – Copyright-Zeile.
+ */
+add_action(
+	'customize_register',
+	function ( $wp_customize ) {
+		$wp_customize->add_section(
+			'fck_footer',
+			array(
+				'title'    => __( 'Footer', 'fechtclub' ),
+				'priority' => 35,
+			)
+		);
+		$wp_customize->add_setting(
+			'fck_footer_copyright',
+			array(
+				'default'           => '© Fechtclub Kassel e.V. ' . wp_date( 'Y' ),
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+		$wp_customize->add_control(
+			'fck_footer_copyright',
+			array(
+				'label'   => __( 'Copyright-Zeile', 'fechtclub' ),
+				'section' => 'fck_footer',
+				'type'    => 'text',
 			)
 		);
 	}
