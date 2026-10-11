@@ -25,6 +25,26 @@
 		"count": {
 			"type": "number",
 			"default": 3
+		},
+		"category": {
+			"type": "number",
+			"default": 0
+		},
+		"showPagination": {
+			"type": "boolean",
+			"default": false
+		},
+		"showMore": {
+			"type": "boolean",
+			"default": false
+		},
+		"moreLabel": {
+			"type": "string",
+			"default": "Mehr News"
+		},
+		"moreUrl": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"editorScript": "fck-news-editor",

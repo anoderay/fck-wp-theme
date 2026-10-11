@@ -88,15 +88,25 @@ add_filter(
 add_action(
 	'init',
 	function () {
+		// News-Block: braucht zusätzlich wp-data/wp-core-data für die
+		// Kategorie-Auswahl (liest die Kategorien aus dem „core“-Store).
 		wp_register_script(
 			'fck-news-editor',
 			get_theme_file_uri( 'blocks/news/index.js' ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n', 'wp-data', 'wp-core-data' ),
 			fck_asset_version( 'blocks/news/index.js' ),
 			true
 		);
-
 		register_block_type( get_theme_file_path( 'blocks/news' ) );
+
+		wp_register_script(
+			'fck-ankuendigung-editor',
+			get_theme_file_uri( 'blocks/ankuendigung/index.js' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ),
+			fck_asset_version( 'blocks/ankuendigung/index.js' ),
+			true
+		);
+		register_block_type( get_theme_file_path( 'blocks/ankuendigung' ) );
 	}
 );
 
@@ -129,6 +139,21 @@ function fck_asset_version( $relative_path ) {
 }
 
 /**
+ * Term-ID der Ankündigungs-Kategorie – oder 0, falls (noch) nicht vorhanden.
+ *
+ * Diese Kategorie trennt Banner-Ankündigungen vom normalen News-Strom: Der
+ * Block „Ankündigungen“ zeigt genau sie, während News-Block, Blog-Übersicht,
+ * Suche und Feed sie ausblenden. Der Slug ist per Filter anpassbar; existiert
+ * die Kategorie nicht, liefert die Funktion 0 und alle Aufrufer verhalten sich
+ * neutral (kein Band, kein Ausschluss) – es geht also nichts kaputt.
+ */
+function fck_announcement_category_id() {
+	$slug = apply_filters( 'fck_announcement_category_slug', 'ankuendigung' );
+	$term = get_category_by_slug( $slug );
+	return $term ? (int) $term->term_id : 0;
+}
+
+/**
  * Stylesheet und Navigations-Skript einbinden.
  */
 function fck_assets() {
@@ -143,8 +168,22 @@ add_action( 'wp_enqueue_scripts', 'fck_assets' );
 add_action(
 	'pre_get_posts',
 	function ( $query ) {
-		if ( ! is_admin() && $query->is_main_query() && ( $query->is_home() || $query->is_archive() ) ) {
+		if ( is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
+		if ( $query->is_home() || $query->is_archive() ) {
 			$query->set( 'posts_per_page', 12 );
+		}
+
+		// Ankündigungen (Banner) gehören nicht in den allgemeinen News-Strom:
+		// Blog-Übersicht, Suche und Feed blenden die Kategorie aus. Ihre eigene
+		// Kategorie-Seite (/kategorie/ankuendigung/) bleibt bewusst unberührt.
+		if ( $query->is_home() || $query->is_search() || $query->is_feed() ) {
+			$fck_ann_cat = fck_announcement_category_id();
+			if ( $fck_ann_cat ) {
+				$query->set( 'category__not_in', array( $fck_ann_cat ) );
+			}
 		}
 	}
 );

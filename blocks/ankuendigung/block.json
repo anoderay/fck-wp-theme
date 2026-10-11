@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fechtclub/ankuendigung",
+	"version": "1.0.0",
+	"title": "Ankündigungen",
+	"category": "fechtclub",
+	"icon": "warning",
+	"description": "Band mit aktuellen Ankündigungen als klickbare Einzeiler. Zeigt veröffentlichte Beiträge der Kategorie „Ankündigung“ und verschwindet automatisch, wenn keine veröffentlicht sind.",
+	"keywords": [ "ankündigung", "hinweis", "band", "aktuell", "aushang" ],
+	"textdomain": "fechtclub",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"count": {
+			"type": "number",
+			"default": 0
+		},
+		"maxWords": {
+			"type": "number",
+			"default": 18
+		}
+	},
+	"editorScript": "fck-ankuendigung-editor",
+	"render": "file:./render.php"
+}
