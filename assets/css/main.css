@@ -886,12 +886,24 @@ h6 {
 	color: var(--fck-gray-light);
 	font-size: 0.875rem;
 }
+/* Das Titelbild wird als Core-Bild-Block gerendert (für die native Lightbox);
+   dessen figure-Standardabstand hier entfernen, Bild füllt den Rahmen wie zuvor. */
+.post-hero__media figure {
+	margin: 0;
+}
 .post-hero__media img {
 	display: block;
 	width: 100%;
 	aspect-ratio: 3 / 2;
 	object-fit: cover;
 	border-radius: 8px;
+}
+
+/* Native Lightbox: hellen Standard-Hintergrund durch einen halbtransparenten
+   Dunkelton ersetzen. Core setzt die Scrim-Farbe inline (aus der Theme-
+   Hintergrundfarbe), daher hier mit !important überschreiben. */
+.wp-lightbox-overlay .scrim {
+	background-color: rgba(7, 10, 19, 0.9) !important;
 }
 @media (max-width: 781px) {
 	.post-hero__inner {

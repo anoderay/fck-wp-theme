@@ -111,6 +111,25 @@ add_action(
 );
 
 /**
+ * WordPress-Lightbox („Beim Klick vergrößern“) für Inhaltsbilder aktivieren –
+ * ausschließlich auf der Beitrags-Einzelseite. Betrifft Core-Bild-Blöcke im
+ * Beitragstext; nicht global (z. B. Hero). Das Titelbild im Beitrags-Kopf ist
+ * ein Template-Bild (kein Block) und bleibt daher unberührt. Eine im Editor
+ * pro Bild getroffene Einstellung hat Vorrang.
+ */
+add_filter(
+	'render_block_data',
+	function ( $block ) {
+		if ( 'core/image' === $block['blockName']
+			&& is_singular( 'post' )
+			&& ! isset( $block['attrs']['lightbox'] ) ) {
+			$block['attrs']['lightbox'] = array( 'enabled' => true );
+		}
+		return $block;
+	}
+);
+
+/**
  * Tabellen-Stil „Stundenplan": wählbar im Editor (Block → Stile). Erzeugt eine
  * dunkle Kopfzeile und gebänderte Zeilen (siehe .is-style-fck-stundenplan in
  * assets/css/main.css). Die Tabelle braucht dafür eine aktivierte Kopfzeile.
