@@ -102,7 +102,7 @@ add_action(
 		wp_register_script(
 			'fck-ankuendigung-editor',
 			get_theme_file_uri( 'blocks/ankuendigung/index.js' ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n', 'wp-data', 'wp-core-data' ),
 			fck_asset_version( 'blocks/ankuendigung/index.js' ),
 			true
 		);

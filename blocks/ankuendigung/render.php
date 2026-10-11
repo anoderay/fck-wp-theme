@@ -12,9 +12,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$fck_cat = fck_announcement_category_id();
+// Im Block gewählte Kategorie hat Vorrang; sonst die Standard-Ankündigungs-
+// kategorie (siehe fck_announcement_category_id()).
+$fck_cat = isset( $attributes['category'] ) ? (int) $attributes['category'] : 0;
+if ( $fck_cat <= 0 ) {
+	$fck_cat = fck_announcement_category_id();
+}
 
-// Ohne eingerichtete Kategorie nichts ausgeben (siehe fck_announcement_category_id()).
+// Ohne (eingerichtete) Kategorie nichts ausgeben.
 if ( ! $fck_cat ) {
 	return;
 }
