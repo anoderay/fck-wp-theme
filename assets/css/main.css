@@ -756,12 +756,13 @@ h6 {
 }
 
 /* --- Ankündigungs-Band --------------------------------------------------- */
-/* Schmaler Hinweis-Abschnitt (z. B. unter dem Hero). Jede Ankündigung ist ein
-   klickbarer Einzeiler: Titel fett, dahinter der gekürzte Auszug. Lange Zeilen
-   werden zusätzlich per CSS mit … abgeschnitten. */
+/* Schlanker Hinweis-Streifen (z. B. unter dem Hero) in CD-Farbe (Navy). Jede
+   Ankündigung ist ein klickbarer Einzeiler: Titel + Doppelpunkt, dahinter der
+   gekürzte Auszug. Lange Zeilen werden per CSS mit … abgeschnitten. */
 .fck-ankuendigung.fck-section {
-	padding-block: clamp(1.25rem, 3vw, 2rem);
-	background: var(--fck-lavender);
+	padding-block: clamp(0.35rem, 1vw, 0.6rem);
+	background: var(--fck-navy);
+	color: var(--fck-white);
 }
 .fck-ankuendigung > .fck-ankuendigung__inner {
 	max-width: var(--fck-grid);
@@ -772,36 +773,42 @@ h6 {
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	align-items: center;
+	gap: 0.15rem;
 }
 .fck-ankuendigung__item {
 	margin: 0;
+	max-width: 100%;
 }
 .fck-ankuendigung__link {
 	display: flex;
-	gap: 0.5rem;
+	gap: 0.4rem;
 	align-items: baseline;
-	padding: 0.65rem 0.9rem;
-	background: var(--fck-white);
-	border-left: 3px solid var(--fck-navy);
-	border-radius: 4px;
-	color: var(--fck-contrast);
+	max-width: 100%;
+	padding: 0.15rem 0;
+	color: var(--fck-white);
 	text-decoration: none;
-	transition: box-shadow 0.15s ease;
+	font-size: 0.875rem;
+	line-height: 1.25;
 }
 .fck-ankuendigung__link:hover,
 .fck-ankuendigung__link:focus-visible {
-	box-shadow: inset 0 0 0 1px var(--fck-gray-light);
+	text-decoration: underline;
 }
 .fck-ankuendigung__title {
 	flex: none;
-	color: var(--fck-navy);
-	font-weight: 700;
+	font-weight: 600;
+	color: var(--fck-white);
+}
+/* Doppelpunkt nur, wenn ein Auszug folgt (sonst hinge er sinnlos am Titelende). */
+.fck-ankuendigung__link:has(.fck-ankuendigung__text) .fck-ankuendigung__title::after {
+	content: ":";
 }
 .fck-ankuendigung__text {
 	flex: 1;
 	min-width: 0;
-	color: var(--fck-gray);
+	color: var(--fck-gray-light);
+	font-weight: 400;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
