@@ -371,10 +371,12 @@ h6 {
 }
 
 /* --- Hero-Pattern -------------------------------------------------------- */
-/* Kompakter als die Standard-Section; oben/unten gleich, damit die Bild-Karte
-   mittig und mit gleich viel Platz darüber/darunter sitzt. */
+/* Kompakter als die Standard-Section. Oben die übliche Luft; unten bewusst
+   knapper, damit das Bild näher am folgenden Abschnitt (z. B. Ankündigungsband)
+   sitzt. */
 .fck-hero {
-	padding-block: clamp(2rem, 4vw, 3rem);
+	padding-top: clamp(2rem, 4vw, 3rem);
+	padding-bottom: clamp(1rem, 2.5vw, 1.75rem);
 }
 /* Kompakter als die volle Wide-Breite: ~960px. Ergibt bei 58/42 einen Text-
    block von ~560px und eine Karte von ~400px. */

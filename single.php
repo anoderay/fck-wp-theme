@@ -54,13 +54,13 @@ while ( have_posts() ) :
 				</div>
 			</article>
 			<?php
-			$fck_posts_page = (int) get_option( 'page_for_posts' );
-			if ( $fck_posts_page && get_permalink( $fck_posts_page ) ) :
-				/* translators: %s: Titel der Beitragsseite (z. B. „News“). */
-				$fck_back_label = sprintf( __( 'Mehr %s', 'fechtclub' ), get_the_title( $fck_posts_page ) );
+			$fck_news_page = fck_news_page_id();
+			if ( $fck_news_page && get_permalink( $fck_news_page ) ) :
+				/* translators: %s: Titel der News-Seite (z. B. „News“). */
+				$fck_back_label = sprintf( __( 'Mehr %s', 'fechtclub' ), get_the_title( $fck_news_page ) );
 				?>
 				<p class="post-nav-back">
-					<a class="button button--outline" href="<?php echo esc_url( get_permalink( $fck_posts_page ) ); ?>"><?php echo esc_html( $fck_back_label ); ?></a>
+					<a class="button button--outline" href="<?php echo esc_url( get_permalink( $fck_news_page ) ); ?>"><?php echo esc_html( $fck_back_label ); ?></a>
 				</p>
 			<?php endif; ?>
 		</div>

@@ -173,6 +173,19 @@ function fck_announcement_category_id() {
 }
 
 /**
+ * ID der News-Übersichtsseite: bevorzugt die im Customizer gewählte „News-
+ * Seite“, sonst die WordPress-Beitragsseite (Einstellungen → Lesen). 0, wenn
+ * keine gesetzt ist. Ziel u. a. des „Mehr News“-Buttons auf Einzelbeiträgen.
+ */
+function fck_news_page_id() {
+	$id = (int) get_theme_mod( 'fck_news_page', 0 );
+	if ( ! $id ) {
+		$id = (int) get_option( 'page_for_posts' );
+	}
+	return $id;
+}
+
+/**
  * Stylesheet und Navigations-Skript einbinden.
  */
 function fck_assets() {
@@ -250,6 +263,39 @@ add_action(
 				'label'          => __( 'Zielseite', 'fechtclub' ),
 				'description'    => __( 'Seite, auf die der Button verlinkt.', 'fechtclub' ),
 				'section'        => 'fck_header_cta',
+				'type'           => 'dropdown-pages',
+				'allow_addition' => true,
+			)
+		);
+	}
+);
+
+/**
+ * Customizer: News-Seite (Ziel des „Mehr News“-Buttons auf Einzelbeiträgen).
+ */
+add_action(
+	'customize_register',
+	function ( $wp_customize ) {
+		$wp_customize->add_section(
+			'fck_news',
+			array(
+				'title'    => __( 'News', 'fechtclub' ),
+				'priority' => 32,
+			)
+		);
+		$wp_customize->add_setting(
+			'fck_news_page',
+			array(
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+			)
+		);
+		$wp_customize->add_control(
+			'fck_news_page',
+			array(
+				'label'          => __( 'News-Seite', 'fechtclub' ),
+				'description'    => __( 'Seite mit der News-Übersicht. Ziel des „Mehr News“-Buttons auf Einzelbeiträgen (sonst die Beitragsseite aus Einstellungen → Lesen).', 'fechtclub' ),
+				'section'        => 'fck_news',
 				'type'           => 'dropdown-pages',
 				'allow_addition' => true,
 			)
