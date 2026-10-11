@@ -147,17 +147,20 @@ h6 {
 	justify-content: space-between;
 	gap: var(--fck-gap);
 }
+/* Brand/Logo vertikal mittig; display:block am Bild vermeidet die inline-
+   Grundlinien-Lücke, die das Logo sonst leicht nach oben versetzt. */
+.site-header__brand {
+	display: flex;
+	align-items: center;
+}
 .site-header__logo {
-	display: inline-block;
+	display: flex;
 	line-height: 0;
 }
-.site-header__logo img {
-	width: clamp(110px, 18vw, 150px);
-	height: auto;
-}
-/* Falls später ein eigenes Logo hochgeladen wird. */
+.site-header__logo img,
 .custom-logo {
-	width: clamp(110px, 18vw, 150px);
+	display: block;
+	width: clamp(128px, 19vw, 158px);
 	height: auto;
 }
 
