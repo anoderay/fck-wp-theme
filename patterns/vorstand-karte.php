@@ -3,7 +3,7 @@
  * Title: FCK Vorstand-Karte (einzeln)
  * Slug: fechtclub/vorstand-karte
  * Categories: fechtclub
- * Description: Einzelne Vorstands-Karte mit Foto, Name, Posten und E-Mail.
+ * Description: Einzelne Vorstands-Karte mit Foto, Name, Posten sowie E-Mail/Telefon (Zeilen bei Nichtbenutzung löschbar).
  * Inserter: true
  */
 ?>
@@ -18,7 +18,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"accent-6","fontSize":"small"} -->
-<p class="has-accent-6-color has-text-color has-small-font-size">Posten · <a href="mailto:vorname.nachname@fechtclub-kassel.de">Mail</a></p>
+<p class="has-accent-6-color has-text-color has-small-font-size">Posten · <a class="fck-mail" href="mailto:vorname.nachname@fechtclub-kassel.de">Mail</a> · <a class="fck-tel" href="tel:+495610000000">Telefon</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->

@@ -1161,12 +1161,17 @@ h6 {
 	color: inherit;
 	text-decoration: underline;
 }
-/* E-Mail-Links stattdessen ohne Unterstreichung, mit vorangestelltem
-   Briefumschlag-Icon (per mask in Textfarbe eingefärbt). */
-.fck-vorstand__caption a[href^="mailto:"] {
+/* Kontakt-Links mit vorangestelltem Icon (per mask in Textfarbe eingefärbt),
+   ohne Unterstreichung. Bewusst an einer Klasse statt am Protokoll-href
+   (mailto:/tel:), damit ein Obfuscator, der den echten href erst per JS setzt,
+   das Styling nicht aushebelt. .fck-tel ist auf Vorrat definiert – die
+   Telefonzeile im Pattern bei Nichtbenutzung einfach löschen. */
+.fck-vorstand__caption a.fck-mail,
+.fck-vorstand__caption a.fck-tel {
 	text-decoration: none;
 }
-.fck-vorstand__caption a[href^="mailto:"]::before {
+.fck-vorstand__caption a.fck-mail::before,
+.fck-vorstand__caption a.fck-tel::before {
 	content: '';
 	display: inline-block;
 	width: 1em;
@@ -1174,8 +1179,20 @@ h6 {
 	margin-right: 0.3em;
 	vertical-align: -0.12em;
 	background-color: currentColor;
-	-webkit-mask: url('../icons/mail.svg') center / contain no-repeat;
-	mask: url('../icons/mail.svg') center / contain no-repeat;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	-webkit-mask-size: contain;
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+}
+.fck-vorstand__caption a.fck-mail::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='5'%20width='18'%20height='14'%20rx='2'/%3E%3Cpath%20d='M3%207l9%206%209-6'/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='5'%20width='18'%20height='14'%20rx='2'/%3E%3Cpath%20d='M3%207l9%206%209-6'/%3E%3C/svg%3E");
+}
+.fck-vorstand__caption a.fck-tel::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M22%2016.92v3a2%202%200%200%201-2.18%202%2019.79%2019.79%200%200%201-8.63-3.07%2019.5%2019.5%200%200%201-6-6%2019.79%2019.79%200%200%201-3.07-8.67A2%202%200%200%201%204.11%202h3a2%202%200%200%201%202%201.72c.13.96.36%201.9.7%202.81a2%202%200%200%201-.45%202.11L8.09%209.91a16%2016%200%200%200%206%206l1.27-1.27a2%202%200%200%201%202.11-.45c.91.34%201.85.57%202.81.7A2%202%200%200%201%2022%2016.92z'/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M22%2016.92v3a2%202%200%200%201-2.18%202%2019.79%2019.79%200%200%201-8.63-3.07%2019.5%2019.5%200%200%201-6-6%2019.79%2019.79%200%200%201-3.07-8.67A2%202%200%200%201%204.11%202h3a2%202%200%200%201%202%201.72c.13.96.36%201.9.7%202.81a2%202%200%200%201-.45%202.11L8.09%209.91a16%2016%200%200%200%206%206l1.27-1.27a2%202%200%200%201%202.11-.45c.91.34%201.85.57%202.81.7A2%202%200%200%201%2022%2016.92z'/%3E%3C/svg%3E");
 }
 /* Responsive: Sobald die Spalten stapeln, würde jede Karte die volle Breite
    einnehmen und bei 3:4 riesig werden – daher hier die Breite deckeln und
