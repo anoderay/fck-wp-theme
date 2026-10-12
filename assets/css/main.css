@@ -1155,42 +1155,27 @@ h6 {
 .fck-vorstand__caption p {
 	margin: 0.2rem 0 0;
 }
-/* Kontakt (Telefon/E-Mail): verborgen, erscheint beim Hover bzw. Tastatur-Fokus
-   der Karte. „Sofern angegeben" – wer keinen Kontakt hat, löscht die Gruppe. */
-.fck-vorstand__contact {
-	display: flex;
-	flex-direction: column;
-	gap: 0.1rem;
-	margin-top: 0;
-	max-height: 0;
-	opacity: 0;
-	overflow: hidden;
-	transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
-}
-.fck-vorstand__card:hover .fck-vorstand__contact,
-.fck-vorstand__card:focus-within .fck-vorstand__contact {
-	max-height: 6rem;
-	margin-top: 0.5rem;
-	opacity: 1;
-}
-.fck-vorstand__contact p {
-	margin: 0;
-}
-.fck-vorstand__contact a {
-	color: var(--fck-white);
-	font-size: 0.875rem;
-	text-decoration: none;
-}
-.fck-vorstand__contact a:hover {
+/* Links in der Caption: gleiche Schriftfarbe wie der umgebende Text (inherit)
+   statt Link-Farbe, zur Kenntlichkeit unterstrichen. */
+.fck-vorstand__caption a {
+	color: inherit;
 	text-decoration: underline;
 }
-/* Ohne Hover (Touch-Geräte) Kontakt dauerhaft zeigen. */
-@media (hover: none) {
-	.fck-vorstand__contact {
-		max-height: 6rem;
-		margin-top: 0.5rem;
-		opacity: 1;
-	}
+/* E-Mail-Links stattdessen ohne Unterstreichung, mit vorangestelltem
+   Briefumschlag-Icon (per mask in Textfarbe eingefärbt). */
+.fck-vorstand__caption a[href^="mailto:"] {
+	text-decoration: none;
+}
+.fck-vorstand__caption a[href^="mailto:"]::before {
+	content: '';
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-right: 0.3em;
+	vertical-align: -0.12em;
+	background-color: currentColor;
+	-webkit-mask: url('../icons/mail.svg') center / contain no-repeat;
+	mask: url('../icons/mail.svg') center / contain no-repeat;
 }
 /* Responsive: Sobald die Spalten stapeln, würde jede Karte die volle Breite
    einnehmen und bei 3:4 riesig werden – daher hier die Breite deckeln und
