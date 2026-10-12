@@ -80,10 +80,10 @@ add_filter(
 );
 
 /**
- * Theme-eigene Blöcke registrieren.
- *
- * „Aktuelle News" ist ein dynamischer Block: Das Editor-Skript wird mit seinen
- * wp-Abhängigkeiten angemeldet; die Frontend-Ausgabe erzeugt blocks/news/render.php.
+ * Theme-eigene dynamische Blöcke registrieren: „Aktuelle News" und
+ * „Ankündigungen". Beide melden ihr Editor-Skript mit seinen wp-Abhängigkeiten
+ * an (inkl. wp-data/wp-core-data für die Kategorie-Auswahl aus dem „core“-Store)
+ * und erzeugen ihre Frontend-Ausgabe serverseitig über die jeweilige render.php.
  */
 add_action(
 	'init',
