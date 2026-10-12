@@ -612,6 +612,14 @@ h6 {
 	max-width: 60rem;
 	margin-inline: auto;
 }
+/* Automatische Silbentrennung für den Fließtext (der Browser nutzt die
+   Sprachangabe lang="de-DE" aus <html>): trennt lange Wörter nur bei Bedarf am
+   Zeilenende. Einzelne Stellen lassen sich im Beitrag per Soft Hyphen (&shy;)
+   feinjustieren. */
+.entry-content {
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
 .entry-content > * {
 	margin-block: 1rem;
 }
@@ -620,6 +628,9 @@ h6 {
 .entry-content > :is(h1, h2, h3, h4, h5, h6) {
 	margin-top: clamp(1.75rem, 4vw, 2.75rem);
 	margin-bottom: 0.5rem;
+	/* Überschriften nicht automatisch trennen – wirkt dort unruhig. */
+	-webkit-hyphens: manual;
+	hyphens: manual;
 }
 .entry-content > :is(h5, h6) {
 	margin-top: clamp(1.25rem, 3vw, 1.75rem);
@@ -1211,7 +1222,13 @@ h6 {
 .wp-block-table.is-style-fck-stundenplan {
 	border: 1px solid var(--fck-gray-light);
 	border-radius: 8px;
-	overflow: hidden;
+	/* overflow-x statt hidden: ist die Tabelle schmaler als der Viewport,
+	   ändert sich nichts; ist sie breiter (Mobil), scrollt sie horizontal,
+	   statt die Zellen zu quetschen und Wörter wie „Montag“ umzubrechen. Die
+	   runden Ecken bleiben, da auto den Inhalt weiterhin an der Border-Box
+	   beschneidet. */
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 }
 .wp-block-table.is-style-fck-stundenplan table {
 	width: 100%;
@@ -1233,8 +1250,12 @@ h6 {
 	font-size: 1.0625rem;
 	font-weight: 600;
 	text-align: center;
+	white-space: nowrap;
 }
-/* Datenzellen: schlicht, zentriert, ohne Gitterlinien. */
+/* Datenzellen: schlicht, zentriert, ohne Gitterlinien. Umbruch erlaubt, damit
+   mehrteilige Werte wie Zeiten („17-19:00“ bricht am Bindestrich) auf Mobil
+   umbrechen können, statt die Tabelle zu verbreitern. Einzelne Wörter
+   (Tagesnamen wie „Montag“) haben keine Umbruchstelle und bleiben einzeilig. */
 .wp-block-table.is-style-fck-stundenplan tbody th,
 .wp-block-table.is-style-fck-stundenplan tbody td {
 	border: 0;
@@ -1244,5 +1265,19 @@ h6 {
 /* Jede zweite Zeile als kräftigeres Band. */
 .wp-block-table.is-style-fck-stundenplan tbody tr:nth-child(even) {
 	background: #e7eaf4;
+}
+/* Mobil: Padding und Schrift verkleinern, damit die Tabelle möglichst ohne
+   horizontales Scrollen passt; reicht es nicht, scrollt sie (overflow-x). */
+@media (max-width: 600px) {
+	.wp-block-table.is-style-fck-stundenplan thead th,
+	.wp-block-table.is-style-fck-stundenplan thead td {
+		padding: 0.5rem 0.7rem;
+		font-size: 0.9375rem;
+	}
+	.wp-block-table.is-style-fck-stundenplan tbody th,
+	.wp-block-table.is-style-fck-stundenplan tbody td {
+		padding: 0.6rem 0.7rem;
+		font-size: 0.875rem;
+	}
 }
 
